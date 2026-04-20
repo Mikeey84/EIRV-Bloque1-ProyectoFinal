@@ -4,6 +4,7 @@ public class MakeChild : MonoBehaviour
 {
     void Start()
     {
-        Camera.main.transform.SetParent(transform);
+        GameObject go = GameObject.Find("Blue Planet");
+        transform.SetParent(go.transform);
     }
 }
