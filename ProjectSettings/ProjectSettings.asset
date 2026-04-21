@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 28
-  productGUID: 00000000000000000000000000000000
+  productGUID: 3d33392a3d5e4dd4484e9c5bcece1727
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -926,7 +926,7 @@ PlayerSettings:
   cloudProjectId: 05c2eab1-a064-4454-9eca-07e358142bf1
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: 
+  projectName: ProyectoFinal 2026-04-20_17-14-21
   organizationId: mikee_84
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
