@@ -676,6 +676,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OpenAnimation: door_3_open
   CloseAnimation: door_3_close
+  OpenMessage: Pulsa E para abrir la puerta
+  CloseMessage: Pulsa E para cerrar la puerta
 --- !u!1 &7709208805978428116
 GameObject:
   m_ObjectHideFlags: 0

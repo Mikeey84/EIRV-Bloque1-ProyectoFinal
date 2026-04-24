@@ -11,17 +11,22 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Ray ray = new Ray(_camera.transform.position, _camera.transform.forward);
+        
+        Ray ray = new Ray(_camera.transform.position, _camera.transform.forward);
 
-            if (Physics.Raycast(ray, out RaycastHit hit, InteractDistance, InteractableLayers))
+        if (Physics.Raycast(ray, out RaycastHit hit, InteractDistance, InteractableLayers))
+        {
+            Interactable interactable = hit.collider.GetComponentInParent<Interactable>();
+
+            if(interactable != null)
             {
-                Interactable interactable = hit.collider.GetComponentInParent<Interactable>();
-                if (interactable != null)
+                interactable.ShowMess();
+                if (Input.GetKeyDown(KeyCode.E))
                     interactable.Interact();
             }
+
         }
+        
     }
 
     private void OnDrawGizmosSelected()

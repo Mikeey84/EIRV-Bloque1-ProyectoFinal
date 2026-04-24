@@ -11,8 +11,15 @@ public class InteractMessageScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI interatMessageText;
     [SerializeField] private float displayTime = 5f;
     [SerializeField] private float typewriterSpeed = 0.05f;
+
     private AudioSource audioSource;
     [SerializeField] private List<AudioClip> interactSounds;
+
+    private Coroutine routine = null;
+
+    private float _shortMessageTimer = 0f;
+    private bool _shortMessageActive = false;
+    private const float ShortMessageTimeout = 0.1f; 
 
     private void Awake()
     {
@@ -30,20 +37,63 @@ public class InteractMessageScript : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    private void Update()
+    {
+        if (!_shortMessageActive) return;
+
+        _shortMessageTimer -= Time.deltaTime;
+
+        if (_shortMessageTimer <= 0f)
+        {
+            _shortMessageActive = false;
+            interactMessageCanvasGroup.alpha = 0;
+            interactMessageCanvasGroup.gameObject.SetActive(false);
+            interatMessageText.text = "";
+        }
+    }
+
+    public void ShowShortMessage(string message)
+    {
+        _shortMessageTimer = ShortMessageTimeout;
+
+        if (!_shortMessageActive)
+        {
+            _shortMessageActive = true;
+            StopAllCoroutines();
+            routine = null;
+            interatMessageText.text = message;
+            interactMessageCanvasGroup.alpha = 1;
+            interactMessageCanvasGroup.gameObject.SetActive(true);
+        }
+        else
+        {
+            interatMessageText.text = message;
+        }
+    }
+
     public void ShowMessage(string message, float displayTime = 5f)
     {
+        _shortMessageActive = false;
         interatMessageText.text = message;
         StopAllCoroutines();
-        StartCoroutine(ShowInfoMessage());
+        routine = StartCoroutine(ShowInfoMessage());
     }
 
     public void ShowMessage(string message)
     {
+        _shortMessageActive = false;
         interatMessageText.text = message;
         StopAllCoroutines();
-        StartCoroutine(ShowInfoMessage());
+        routine = StartCoroutine(ShowInfoMessage());
     }
 
+    public void ShowMessageTypewriter(string message)
+    {
+        _shortMessageActive = false;
+        interatMessageText.text = message;
+        StopAllCoroutines();
+        StartCoroutine(ShowInfoMessageTypewriter());
+    }
 
     IEnumerator ShowInfoMessage()
     {
@@ -64,13 +114,7 @@ public class InteractMessageScript : MonoBehaviour
         }
         interatMessageText.text = "";
         interactMessageCanvasGroup.gameObject.SetActive(false);
-    }
-
-    public void ShowMessageTypewriter(string message)
-    {
-        interatMessageText.text = message;
-        StopAllCoroutines();
-        StartCoroutine(ShowInfoMessageTypewriter());
+        routine = null;
     }
 
     IEnumerator ShowInfoMessageTypewriter()
@@ -79,16 +123,13 @@ public class InteractMessageScript : MonoBehaviour
         interatMessageText.text = "";
         interactMessageCanvasGroup.alpha = 1;
         interactMessageCanvasGroup.gameObject.SetActive(true);
-
         foreach (char letter in fullText)
         {
             interatMessageText.text += letter;
             audioSource.PlayOneShot(interactSounds[Random.Range(0, interactSounds.Count)]);
             yield return new WaitForSeconds(typewriterSpeed);
         }
-
         yield return new WaitForSeconds(displayTime);
-
         float duration = 1f;
         while (duration >= 0)
         {

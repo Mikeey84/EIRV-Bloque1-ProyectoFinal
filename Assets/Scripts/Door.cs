@@ -5,6 +5,8 @@ public class Door : Interactable
     [Header("Door")]
     public string OpenAnimation;
     public string CloseAnimation;
+    public string OpenMessage;
+    public string CloseMessage;
 
     private Animator _animator;
     private bool _isOpen = false;
@@ -20,6 +22,12 @@ public class Door : Interactable
         _isOpen = !_isOpen;
         _animator.Play(_isOpen ? OpenAnimation : CloseAnimation);
     }
+
+    public override void ShowMess()
+    {
+        InteractMessageScript.Instance.ShowShortMessage(!_isOpen ? OpenMessage : CloseMessage);
+    }
+
     public void SetAnimation(string Animation)
     {
         if (_animator != null)
