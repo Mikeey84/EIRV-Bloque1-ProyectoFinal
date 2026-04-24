@@ -353,8 +353,49 @@ MonoBehaviour:
   CurrentThrust: 5
   ThrustScrollStep: 1
   MaxSpeed: 15
-  Damping: 0.95
-  CameraTarget: {fileID: 0}
+  Damping: 0
+--- !u!114 &427451365 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6897240139477413046, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
+  m_PrefabInstance: {fileID: 1467537422}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427451344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &427451367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427451344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45a986388cd709c489bac38f439be9c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CinemachineCameraTarget: {fileID: 1828676807}
+  TopClamp: 90
+  BottomClamp: -90
+  RotationSpeed: 1
+--- !u!114 &427451368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427451344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f31e3ac458c9e3e489bc8749043b60e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Walk: 1
+  walkController: {fileID: 427451365}
+  jetpackController: {fileID: 427451359}
 --- !u!1 &629689960
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,7 +977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6897240139477413046, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8166472192758107094, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -985,6 +1026,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6897240139477413041, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 427451359}
+    - targetCorrespondingSourceObject: {fileID: 6897240139477413041, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 427451367}
+    - targetCorrespondingSourceObject: {fileID: 6897240139477413041, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 427451368}
   m_SourcePrefab: {fileID: 100100000, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
 --- !u!1 &1500655081
 GameObject:
@@ -1616,6 +1663,11 @@ MonoBehaviour:
   target: {fileID: 1611798076}
   radius: 1000
   speed: 1
+--- !u!1 &1828676807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1243539305073743338, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
+  m_PrefabInstance: {fileID: 1467537422}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1945908299
 GameObject:
   m_ObjectHideFlags: 0
