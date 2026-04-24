@@ -20,4 +20,9 @@ public class Door : Interactable
         _isOpen = !_isOpen;
         _animator.Play(_isOpen ? OpenAnimation : CloseAnimation);
     }
+    public void SetAnimation(string Animation)
+    {
+        if (_animator != null)
+            _animator.Play(Animation);
+    }
 }

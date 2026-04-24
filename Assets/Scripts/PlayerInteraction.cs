@@ -6,12 +6,8 @@ public class PlayerInteraction : MonoBehaviour
     public float InteractDistance = 3f;
     public LayerMask InteractableLayers;
 
-    private Camera _camera;
+    public Camera _camera;
 
-    private void Start()
-    {
-        _camera = Camera.main;
-    }
 
     private void Update()
     {
@@ -21,7 +17,7 @@ public class PlayerInteraction : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hit, InteractDistance, InteractableLayers))
             {
-                Interactable interactable = hit.collider.GetComponent<Interactable>();
+                Interactable interactable = hit.collider.GetComponentInParent<Interactable>();
                 if (interactable != null)
                     interactable.Interact();
             }
