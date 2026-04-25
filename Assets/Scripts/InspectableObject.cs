@@ -1,18 +1,21 @@
 using StarterAssets;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InspectableObject : Interactable
 {
     [Header("Configuración de Inspección")]
+    public bool destroyOnInspect = false;
     public float distanciaDeLaCamara = 1.5f;
     public float sensibilidadRotacion = 500f;
     public string mensajeAlMirar = "Presiona E para coger";
 
     [Header("Referencias (Opcional)")]
-    // Si dejas estos vacíos, el script intentará buscarlos automáticamente
     public CameraController cameraController;
     public FirstPersonController firstPersonController;
+
+    public List<UnityEvent> OnInspectionStarted;
 
     private bool isInspecting = false;
     private Vector3 posicionOriginal;
@@ -35,28 +38,36 @@ public class InspectableObject : Interactable
 
     public override void Interact()
     {
-        if (!isInspecting)
-            StartInspecting();
+        if (destroyOnInspect)
+        {
+            // Lanzar evento y destruir sin inspeccionar
+            foreach(UnityEvent e in OnInspectionStarted)
+            {
+                e?.Invoke();
+            }
+            Destroy(gameObject);
+        }
         else
-            StopInspecting();
+        {
+            if (!isInspecting)
+                StartInspecting();
+            else
+                StopInspecting();
+        }
     }
 
     void StartInspecting()
     {
         isInspecting = true;
         PlayerInteraction.IsInspecting = true;
-
         InteractMessageScript.Instance.Hide();
 
-        // Guardar estado original
         posicionOriginal = transform.position;
         rotacionOriginal = transform.rotation;
         transformOriginalParent = transform.parent;
 
-        // Desactivar controles
         SetPlayerControls(false);
 
-        // Mover el objeto frente a la cámara
         transform.SetParent(camaraTransform);
         transform.localPosition = new Vector3(0, 0, distanciaDeLaCamara);
     }
@@ -67,7 +78,6 @@ public class InspectableObject : Interactable
         isInspecting = false;
         PlayerInteraction.IsInspecting = false;
         SetPlayerControls(true);
-
         DestroyGameObject();
     }
 
@@ -80,7 +90,6 @@ public class InspectableObject : Interactable
     {
         if (isInspecting)
         {
-            // Rotar el objeto con el ratón
             float rotX = Input.GetAxis("Mouse X") * sensibilidadRotacion * Time.deltaTime;
             float rotY = Input.GetAxis("Mouse Y") * sensibilidadRotacion * Time.deltaTime;
 
