@@ -1,4 +1,5 @@
 using StarterAssets;
+using System.Collections;
 using UnityEngine;
 
 public class InspectableObject : Interactable
@@ -11,7 +12,7 @@ public class InspectableObject : Interactable
     [Header("Referencias (Opcional)")]
     // Si dejas estos vacíos, el script intentará buscarlos automáticamente
     public CameraController cameraController;
-    public MonoBehaviour firstPersonController;
+    public FirstPersonController firstPersonController;
 
     private bool isInspecting = false;
     private Vector3 posicionOriginal;
@@ -62,13 +63,15 @@ public class InspectableObject : Interactable
     {
         isInspecting = false;
         PlayerInteraction.IsInspecting = false;
-        // Devolver a su lugar (o dejarlo donde estaba si es un objeto físico)
-        transform.SetParent(transformOriginalParent);
-        transform.position = posicionOriginal;
-        transform.rotation = rotacionOriginal;
-
-        // Reactivar controles
         SetPlayerControls(true);
+
+        StartCoroutine(DestroyNextFrame());
+    }
+
+    IEnumerator DestroyNextFrame()
+    {
+        yield return new WaitForEndOfFrame();
+        Destroy(gameObject);
     }
 
     private void Update()
@@ -82,7 +85,6 @@ public class InspectableObject : Interactable
             transform.Rotate(camaraTransform.up, -rotX, Space.World);
             transform.Rotate(camaraTransform.right, rotY, Space.World);
 
-            // Permitir soltar con E o Escape
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 StopInspecting();
@@ -92,10 +94,9 @@ public class InspectableObject : Interactable
 
     private void SetPlayerControls(bool state)
     {
-        if (cameraController != null) cameraController.enabled = state;
-        if (firstPersonController != null) firstPersonController.enabled = state;
+        cameraController.enabled = state;
+        firstPersonController.canMove = state;
 
-        // Bloquear/Desbloquear cursor
         Cursor.lockState = state ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !state;
     }

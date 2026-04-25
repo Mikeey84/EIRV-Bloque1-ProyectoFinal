@@ -1154,6 +1154,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6897240139477413046, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
+      propertyPath: canMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6897240139477413046, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
       propertyPath: SpeedChangeRate
       value: 2
       objectReference: {fileID: 0}
@@ -2222,7 +2226,7 @@ GameObject:
   - component: {fileID: 2081012644}
   - component: {fileID: 2081012643}
   - component: {fileID: 2081012647}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

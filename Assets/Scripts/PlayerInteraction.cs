@@ -9,6 +9,11 @@ public class PlayerInteraction : MonoBehaviour
 
     public static bool IsInspecting = false;
 
+    private void Start()
+    {
+        IsInspecting = false;
+    }
+
     private void Update()
     {
         if (IsInspecting) return;

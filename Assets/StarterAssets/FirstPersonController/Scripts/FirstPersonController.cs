@@ -30,6 +30,9 @@ namespace StarterAssets
         public float GroundedRadius = 0.5f;
         public LayerMask GroundLayers;
 
+        public bool canMove = true;
+
+
         private float _speed;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
@@ -77,6 +80,7 @@ namespace StarterAssets
 
         private void Move()
         {
+            if (!canMove) return;
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
