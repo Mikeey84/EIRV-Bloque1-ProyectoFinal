@@ -353,7 +353,7 @@ MonoBehaviour:
   CurrentThrust: 5
   ThrustScrollStep: 1
   MaxSpeed: 15
-  Damping: 0
+  Damping: 0.95
 --- !u!114 &427451365 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6897240139477413046, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
