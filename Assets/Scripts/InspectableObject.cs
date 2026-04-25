@@ -45,6 +45,9 @@ public class InspectableObject : Interactable
     {
         isInspecting = true;
         PlayerInteraction.IsInspecting = true;
+
+        InteractMessageScript.Instance.Hide();
+
         // Guardar estado original
         posicionOriginal = transform.position;
         rotacionOriginal = transform.rotation;
@@ -60,16 +63,16 @@ public class InspectableObject : Interactable
 
     void StopInspecting()
     {
+        InteractMessageScript.Instance.Hide();
         isInspecting = false;
         PlayerInteraction.IsInspecting = false;
         SetPlayerControls(true);
 
-        StartCoroutine(DestroyNextFrame());
+        DestroyGameObject();
     }
 
-    IEnumerator DestroyNextFrame()
+    private void DestroyGameObject()
     {
-        yield return new WaitForEndOfFrame();
         Destroy(gameObject);
     }
 
@@ -86,6 +89,8 @@ public class InspectableObject : Interactable
 
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                InteractMessageScript.Instance.Hide();
+                gameObject.layer = 0;
                 StopInspecting();
             }
         }
