@@ -1045,6 +1045,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8340511610421459286, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340511610421459286, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340511610421459286, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
+      propertyPath: m_Constraints
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 8340511610421459286, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
+      propertyPath: m_ImplicitTensor
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1802,7 +1818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfc2a96777e375c4c96396b8359a9d85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1611798076}
   radius: 1700
   speed: 0.1
 --- !u!1 &1775252567 stripped
