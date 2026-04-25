@@ -7,7 +7,7 @@ public class InspectableObject : Interactable
     [Header("Configuración de Inspección")]
     public float distanciaDeLaCamara = 1.5f;
     public float sensibilidadRotacion = 500f;
-    public string mensajeAlMirar = "Presiona E para inspeccionar";
+    public string mensajeAlMirar = "Presiona E para coger";
 
     [Header("Referencias (Opcional)")]
     // Si dejas estos vacíos, el script intentará buscarlos automáticamente
@@ -29,8 +29,7 @@ public class InspectableObject : Interactable
     {
         if (!isInspecting)
         {
-            // Aquí podrías conectar con tu sistema de UI de texto
-            Debug.Log(mensajeAlMirar);
+            InteractMessageScript.Instance.ShowShortMessage(mensajeAlMirar);
         }
     }
 
