@@ -166,5 +166,10 @@ namespace StarterAssets
             Gizmos.color = Grounded ? transparentGreen : transparentRed;
             Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
         }
+
+        public void CanMove(bool m)
+        {
+            canMove = m;
+        }
     }
 }
