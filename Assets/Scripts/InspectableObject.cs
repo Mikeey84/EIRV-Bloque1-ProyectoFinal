@@ -100,8 +100,5 @@ public class InspectableObject : Interactable
     {
         cameraController.enabled = state;
         firstPersonController.canMove = state;
-
-        Cursor.lockState = state ? CursorLockMode.Locked : CursorLockMode.None;
-        Cursor.visible = !state;
     }
 }

@@ -2335,7 +2335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanciaDeLaCamara: 1.5
-  sensibilidadRotacion: 500
+  sensibilidadRotacion: 100
   mensajeAlMirar: Presiona E para coger
   cameraController: {fileID: 427451367}
   firstPersonController: {fileID: 427451365}
