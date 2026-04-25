@@ -2,31 +2,34 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    [Header("Interaction")]
+    [Header("Interaction Settings")]
     public float InteractDistance = 3f;
     public LayerMask InteractableLayers;
-
     public Camera _camera;
 
+    public static bool IsInspecting = false;
 
     private void Update()
     {
-        
-        Ray ray = new Ray(_camera.transform.position, _camera.transform.forward);
+        if (IsInspecting) return;
 
-        if (Physics.Raycast(ray, out RaycastHit hit, InteractDistance, InteractableLayers))
+        Ray ray = new Ray(_camera.transform.position, _camera.transform.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, InteractDistance, InteractableLayers))
         {
             Interactable interactable = hit.collider.GetComponentInParent<Interactable>();
 
-            if(interactable != null)
+            if (interactable != null)
             {
                 interactable.ShowMess();
-                if (Input.GetKeyDown(KeyCode.E))
-                    interactable.Interact();
-            }
 
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    interactable.Interact();
+                }
+            }
         }
-        
     }
 
     private void OnDrawGizmosSelected()
