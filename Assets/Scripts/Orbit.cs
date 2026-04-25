@@ -2,11 +2,18 @@ using UnityEngine;
 
 public class Orbit : MonoBehaviour
 {
-    public Transform target;   
-    public float radius = 5f;  
-    public float speed = 250f;  
+    public Transform target;
+    public float radius = 5f;
+    public float speed = 250f;
+
+    public float startOffset;
 
     private float angle = 0f;
+
+    void Start()
+    {
+        angle = startOffset;
+    }
 
     void Update()
     {

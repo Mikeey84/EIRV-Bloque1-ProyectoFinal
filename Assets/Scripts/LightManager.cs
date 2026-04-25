@@ -5,14 +5,32 @@ public class LightManager : MonoBehaviour
 {
     [SerializeField] private List<Light> lights;
 
+    [Header("Parpadeo")]
+    public bool Parpadeo = true;
+    public float BlinkSpeed = 2f;
+    public float MinIntensity = 0f;
+    public float MaxIntensity = 1f;
 
     private void Start()
     {
-        foreach (var light in lights)
+        ChangeColors(Color.red, MaxIntensity);
+    }
+
+    private void Update()
+    {
+        if (Parpadeo)
         {
-            ChangeColors(Color.red, 1f);
+            float t = Mathf.PingPong(Time.time * BlinkSpeed, 1f);
+            float intensity = Mathf.Lerp(MinIntensity, MaxIntensity, t);
+
+            foreach (var light in lights)
+            {
+                light.intensity = intensity;
+                light.enabled = intensity > 0.01f;
+            }
         }
     }
+
     public void SetLights(bool state)
     {
         foreach (var light in lights)
@@ -29,4 +47,4 @@ public class LightManager : MonoBehaviour
             light.intensity = intensity;
         }
     }
-}   
+}
