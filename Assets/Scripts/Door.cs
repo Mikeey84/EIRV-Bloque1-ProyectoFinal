@@ -41,4 +41,8 @@ public class Door : Interactable
         if (_animator != null)
             _animator.Play(Animation);
     }
+    public void SetState(bool l)
+    {
+        locked = l;
+    }
 }
