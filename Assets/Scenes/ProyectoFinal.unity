@@ -704,7 +704,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1131737005}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -979,13 +979,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7982797968762456735, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.375001
+      objectReference: {fileID: 0}
     - target: {fileID: 8166472192758107094, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8166472192758107094, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.27
+      value: 0.54
       objectReference: {fileID: 0}
     - target: {fileID: 8166472192758107094, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1088,6 +1092,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2751710175460851669, guid: 3d930624068a0544699572cca2b6c74a, type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3533259617437591973, guid: 3d930624068a0544699572cca2b6c74a, type: 3}
+      propertyPath: locked
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8325384576963889654, guid: 3d930624068a0544699572cca2b6c74a, type: 3}

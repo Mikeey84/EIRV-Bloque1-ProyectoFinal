@@ -7,6 +7,8 @@ public class Door : Interactable
     public string CloseAnimation;
     public string OpenMessage;
     public string CloseMessage;
+    public string LockedMessage;
+    public bool locked; 
 
     private Animator _animator;
     private bool _isOpen = false;
@@ -18,6 +20,11 @@ public class Door : Interactable
 
     public override void Interact()
     {
+        if(locked)
+        {
+            InteractMessageScript.Instance.ShowShortMessage(LockedMessage, 1.5f);
+            return;
+        }
         Debug.Log(_isOpen ? "Closing door" : "Opening door");
         _isOpen = !_isOpen;
         _animator.Play(_isOpen ? OpenAnimation : CloseAnimation);
@@ -25,7 +32,8 @@ public class Door : Interactable
 
     public override void ShowMess()
     {
-        InteractMessageScript.Instance.ShowShortMessage(!_isOpen ? OpenMessage : CloseMessage);
+        if(!locked)
+            InteractMessageScript.Instance.ShowShortMessage(!_isOpen ? OpenMessage : CloseMessage);
     }
 
     public void SetAnimation(string Animation)

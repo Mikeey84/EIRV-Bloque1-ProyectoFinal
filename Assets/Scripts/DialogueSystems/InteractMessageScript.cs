@@ -71,6 +71,25 @@ public class InteractMessageScript : MonoBehaviour
         }
     }
 
+    public void ShowShortMessage(string message, float timeout = ShortMessageTimeout)
+    {
+        _shortMessageTimer = timeout;
+
+        if (!_shortMessageActive)
+        {
+            _shortMessageActive = true;
+            StopAllCoroutines();
+            routine = null;
+            interatMessageText.text = message;
+            interactMessageCanvasGroup.alpha = 1;
+            interactMessageCanvasGroup.gameObject.SetActive(true);
+        }
+        else
+        {
+            interatMessageText.text = message;
+        }
+    }
+
     public void ShowMessage(string message, float displayTime = 5f)
     {
         _shortMessageActive = false;

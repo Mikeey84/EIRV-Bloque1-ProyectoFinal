@@ -678,6 +678,8 @@ MonoBehaviour:
   CloseAnimation: door_3_close
   OpenMessage: Pulsa E para abrir la puerta
   CloseMessage: Pulsa E para cerrar la puerta
+  LockedMessage: "La puerta est\xE1 bloqueada"
+  locked: 0
 --- !u!1 &7709208805978428116
 GameObject:
   m_ObjectHideFlags: 0
