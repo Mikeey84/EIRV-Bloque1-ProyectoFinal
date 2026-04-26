@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     [Header("Camera Shake")]
     public float shakeMagnitude = 0.1f;
 
+    public UIAndParentController UIAndParentController;
+
     private Coroutine shakeCoroutine;
     private Vector3 originalCameraLocalPos;
 
@@ -51,7 +53,7 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void AddRotation()
+    public void AddRotation(GameObject parent)
     {
         if (rotationCount < 2)
         {
@@ -59,6 +61,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            UIAndParentController.newParent = parent.transform;
+
             foreach (var unityEvent in onRotationLimitReached)
             {
                 unityEvent?.Invoke();
