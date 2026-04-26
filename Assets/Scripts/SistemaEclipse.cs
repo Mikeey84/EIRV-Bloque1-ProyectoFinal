@@ -16,6 +16,7 @@ public class SistemaEclipse : MonoBehaviour
     public float intensidad1Rayo = 0.33f;  // Penumbra fuerte
     public float intensidad2Rayos = 0.66f; // Penumbra leve
     public float intensidad3Rayos = 1.0f;  // Luz total
+    public float multiplicador = 1.0f;  
     public LayerMask layer;
     [Header("Ajustes de Suavizado")]
     public float velocidadTransicion = 2.0f;
@@ -44,14 +45,19 @@ public class SistemaEclipse : MonoBehaviour
         // Asignar intensidad según cuántos rayos pasaron
         switch (rayosDespejados)
         {
-            case 0: intensidadObjetivo = intensidad0Rayos; break;
-            case 1: intensidadObjetivo = intensidad1Rayo; break;
-            case 2: intensidadObjetivo = intensidad2Rayos; break;
-            case 3: intensidadObjetivo = intensidad3Rayos; break;
+            case 0: intensidadObjetivo = intensidad0Rayos * multiplicador; break;
+            case 1: intensidadObjetivo = intensidad1Rayo * multiplicador; break;
+            case 2: intensidadObjetivo = intensidad2Rayos * multiplicador; break;
+            case 3: intensidadObjetivo = intensidad3Rayos * multiplicador; break;
         }
 
         // Aplicar suavizado
         luzSolar.intensity = Mathf.Lerp(luzSolar.intensity, intensidadObjetivo, Time.deltaTime * velocidadTransicion);
+    }
+
+    public void SetMultiplicador(float nuevoMultiplicador)
+    {
+        multiplicador = nuevoMultiplicador;
     }
 
     bool ChequearRayo(Vector3 puntoDestino)
