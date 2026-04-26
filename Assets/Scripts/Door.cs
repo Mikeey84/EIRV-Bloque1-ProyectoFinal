@@ -45,4 +45,9 @@ public class Door : Interactable
     {
         locked = l;
     }
+
+    public void ChangeLockText(string text)
+    {
+        LockedMessage = text;
+    }   
 }

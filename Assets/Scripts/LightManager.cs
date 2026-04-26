@@ -13,7 +13,7 @@ public class LightManager : MonoBehaviour
 
     private void Start()
     {
-        ChangeColors(Color.red, MaxIntensity);
+        ChangeColors(new Vector3(1,0,0), MaxIntensity);
     }
 
     private void Update()
@@ -39,11 +39,32 @@ public class LightManager : MonoBehaviour
         }
     }
 
-    public void ChangeColors(Color color, float intensity)
+    public void SetParpadeo(bool state)
+    {
+        Parpadeo = state;
+    }
+
+    public void ChangeColors(int color)
+    {
+        Color colorAux;
+        switch (color)
+        {
+            case 0: colorAux = Color.red; break;
+            case 1: colorAux = Color.green; break;
+            case 2: colorAux = Color.blue; break;
+            default: colorAux = Color.white; break;
+        }
+        foreach (var light in lights)
+        {
+            light.color = colorAux;
+        }
+    }
+
+    public void ChangeColors(Vector3 color, float intensity)
     {
         foreach (var light in lights)
         {
-            light.color = color;
+            light.color = new Color(color.x, color.y, color.z);
             light.intensity = intensity;
         }
     }
