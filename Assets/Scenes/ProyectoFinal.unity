@@ -6557,7 +6557,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: cad51675ab9d6a140b1679431bcdb6a0, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.054
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -8815,7 +8815,7 @@ MonoBehaviour:
   breath: {fileID: 1467537424}
   heartbeat: {fileID: 1467537429}
   tinnitus: {fileID: 1467537430}
-  loweredVolume: 0.517
+  loweredVolume: 0
 --- !u!1001 &1790690757
 PrefabInstance:
   m_ObjectHideFlags: 0

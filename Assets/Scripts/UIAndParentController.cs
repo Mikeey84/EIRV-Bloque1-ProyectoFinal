@@ -18,7 +18,7 @@ public class UIAndParentController : MonoBehaviour
     public AudioSource tinnitus;
 
     [Range(0f, 1f)]
-    public float loweredVolume = 0.2f;
+    public float loweredVolume = 0f;
 
     private float originalVolume1;
     private float originalVolume2;
@@ -89,6 +89,9 @@ public class UIAndParentController : MonoBehaviour
         float startVolume1 = breath != null ? breath.volume : 0f;
         float startVolume2 = heartbeat != null ? heartbeat.volume : 0f;
         float startVolume3 = tinnitus != null ? tinnitus.volume : 0f;
+
+        tinnitus.Play();
+
 
         while (elapsed < fadeDuration)
         {
