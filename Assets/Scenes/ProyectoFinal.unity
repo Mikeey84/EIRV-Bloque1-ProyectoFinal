@@ -3258,15 +3258,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_LocalScale.x
-      value: 342.3
+      value: 366.21
       objectReference: {fileID: 0}
     - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_LocalScale.y
-      value: 120.32
+      value: 128.72447
       objectReference: {fileID: 0}
     - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_LocalScale.z
-      value: 120.32
+      value: 128.72447
       objectReference: {fileID: 0}
     - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3310,7 +3310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3039082362767523460, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_Name
@@ -4829,12 +4829,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1526029993}
     m_Modifications:
     - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.5258307
+      value: 8.638341
       objectReference: {fileID: 0}
     - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.8002
+      value: 9.576684
       objectReference: {fileID: 0}
     - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4875,6 +4879,10 @@ PrefabInstance:
     - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3039082362767523460, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_Name
@@ -6346,7 +6354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8340511610421459286, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
       propertyPath: m_Drag
-      value: 20.2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8340511610421459286, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
       propertyPath: m_Mass
@@ -6358,7 +6366,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8340511610421459286, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
       propertyPath: m_AngularDrag
-      value: 0
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8340511610421459286, guid: 7367b963d873e3840b3a36249ef4732d, type: 3}
       propertyPath: m_Constraints
@@ -8895,12 +8903,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 1460340561}
     m_Modifications:
     - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.5258307
+      value: 10.785297
       objectReference: {fileID: 0}
     - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.8002
+      value: 11.956854
       objectReference: {fileID: 0}
     - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8941,6 +8953,10 @@ PrefabInstance:
     - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3039082362767523460, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_Name
@@ -9063,12 +9079,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 2061065175}
     m_Modifications:
     - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 8.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.5258307
+      value: 20.711811
       objectReference: {fileID: 0}
     - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.8002
+      value: 22.96164
       objectReference: {fileID: 0}
     - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9109,6 +9129,10 @@ PrefabInstance:
     - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 468027902152166339, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3039082362767523460, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_Name
