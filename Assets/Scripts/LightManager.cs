@@ -39,6 +39,14 @@ public class LightManager : MonoBehaviour
         }
     }
 
+    public void SetIntensity(float inte)
+    {
+        foreach (var light in lights)
+        {
+            light.intensity = inte;
+        }
+    }
+
     public void SetParpadeo(bool state)
     {
         Parpadeo = state;

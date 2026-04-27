@@ -16,7 +16,7 @@ public class JetpackController : MonoBehaviour
     private CharacterController _controller;
     private Vector3 _velocity = Vector3.zero;
     private Camera _camera;
-
+    private bool canMove = true;
     private void Start()
     {
         _controller = GetComponent<CharacterController>();
@@ -44,28 +44,40 @@ public class JetpackController : MonoBehaviour
 
     private void HandleMovement()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-
-        Vector3 forward = _camera.transform.forward;
-        Vector3 right = _camera.transform.right;
-
-        // Mantener derecha horizontal para que A/D no suba ni baje
-        right.y = 0f;
-        right.Normalize();
-
-        Vector3 inputDirection = forward * v + right * h;
-
-        if (inputDirection.sqrMagnitude > 0.01f)
+        if (canMove)
         {
-            _velocity += inputDirection.normalized * CurrentThrust * Time.deltaTime;
-            _velocity = Vector3.ClampMagnitude(_velocity, MaxSpeed);
-        }
-        else
-        {
-            _velocity *= Mathf.Pow(1f - Damping, Time.deltaTime * 60f);
-        }
+            float h = Input.GetAxisRaw("Horizontal");
+            float v = Input.GetAxisRaw("Vertical");
 
+            Vector3 forward = _camera.transform.forward;
+            Vector3 right = _camera.transform.right;
+
+            // Mantener derecha horizontal para que A/D no suba ni baje
+            right.y = 0f;
+            right.Normalize();
+
+            Vector3 inputDirection = forward * v + right * h;
+
+            if (inputDirection.sqrMagnitude > 0.01f)
+            {
+                _velocity += inputDirection.normalized * CurrentThrust * Time.deltaTime;
+                _velocity = Vector3.ClampMagnitude(_velocity, MaxSpeed);
+            }
+            else
+            {
+                _velocity *= Mathf.Pow(1f - Damping, Time.deltaTime * 60f);
+            }
+        }
         _controller.Move(_velocity * Time.deltaTime);
+    }
+
+    public void AddForceY()
+    {
+        _velocity += Vector3.up * 3f;
+    }
+
+    public void CantMove()
+    {
+        canMove = false;
     }
 }
