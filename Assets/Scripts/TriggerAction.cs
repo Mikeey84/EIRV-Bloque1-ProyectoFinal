@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 
 public class TriggerAction : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class TriggerAction : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && GameManager.Instance.IsGame())
         {
             foreach (var evt in onPlayerEnter)
             {

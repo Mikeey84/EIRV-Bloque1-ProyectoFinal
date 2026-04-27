@@ -8,7 +8,7 @@ public class LightsPuzzle : MonoBehaviour
     public Lever lever1;
     public Lever lever2;
     public Lever lever3;
-
+    public AudioSource a;
     [Header("Events")]
     public List<UnityEvent> onPuzzleSolved;
 
@@ -16,6 +16,8 @@ public class LightsPuzzle : MonoBehaviour
 
     public void CheckSolution()
     {
+        a.PlayOneShot(a.clip);
+
         if (solved) return;
         if (lever1.GetValue() == 1 &&
             lever2.GetValue() == -1 &&

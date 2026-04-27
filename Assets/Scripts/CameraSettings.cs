@@ -7,7 +7,7 @@ public class CameraSettings : MonoBehaviour
     public float FarClipPlane = 5000f;
     public float FieldOfView = 60f;
 
-    private void Start()
+    private void OnEnable()
     {
         LensSettings lens = VirtualCamera.Lens;
         lens.FarClipPlane = FarClipPlane;

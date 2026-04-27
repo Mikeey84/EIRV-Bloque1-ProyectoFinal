@@ -37,7 +37,7 @@ namespace StarterAssets
             }
         }
 
-        private void Start()
+        private void OnEnable()
         {
             _input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Unity.Cinemachine;
+using StarterAssets;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,9 +27,12 @@ public class GameManager : MonoBehaviour
 
     public GameObject playerTrigger;
     public JetpackController controller;
+    public StarterAssetsInputs starterAssetsInputs;
 
     private Coroutine shakeCoroutine;
     private Vector3 originalCameraLocalPos;
+
+    private bool isGame = false;
 
     void Start()
     {
@@ -145,5 +149,15 @@ public class GameManager : MonoBehaviour
     {
         if (virtualCamera == null) return;
         virtualCamera.LookAt = null;
+    }
+
+    public bool IsGame()
+    {
+        return isGame;
+    }   
+    public void SetIsGame(bool value)
+    {
+        isGame = value;
+        starterAssetsInputs.CursorLock();
     }
 }
