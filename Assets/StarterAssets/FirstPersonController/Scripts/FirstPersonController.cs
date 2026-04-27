@@ -151,8 +151,6 @@ namespace StarterAssets
 
         private void Move()
         {
-            if (!canMove) return;
-
             Vector3 platformDelta = Vector3.zero;
 
             if (movingReference != null)
@@ -161,16 +159,37 @@ namespace StarterAssets
                 lastReferencePosition = movingReference.position;
             }
 
+            if (!canMove)
+            {
+                if (_controller != null)
+                {
+                    _controller.Move(platformDelta);
+                }
+
+                _speed = 0f;
+                return;
+            }
+
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
-            if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+
+            if (_input.move == Vector2.zero)
+            {
+                targetSpeed = 0.0f;
+                _speed = 0f;
+            }
 
             float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
 
-            _speed = Mathf.Lerp(
-                _speed,
-                targetSpeed * inputMagnitude,
-                Time.deltaTime * SpeedChangeRate
-            );
+            if (_input.move != Vector2.zero)
+            {
+                _speed = Mathf.Lerp(
+                    _speed,
+                    targetSpeed * inputMagnitude,
+                    Time.deltaTime * SpeedChangeRate
+                );
+
+                _speed = Mathf.Round(_speed * 1000f) / 1000f;
+            }
 
             Vector3 inputDirection = Vector3.zero;
 
@@ -181,7 +200,13 @@ namespace StarterAssets
                     transform.forward * _input.move.y;
             }
 
-            Vector3 playerMovement = inputDirection.normalized * (_speed * Time.deltaTime);
+            Vector3 playerMovement = Vector3.zero;
+
+            if (_input.move != Vector2.zero)
+            {
+                playerMovement = inputDirection.normalized * (_speed * Time.deltaTime);
+            }
+
             Vector3 gravityMovement = new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime;
 
             _controller.Move(platformDelta + playerMovement + gravityMovement);
