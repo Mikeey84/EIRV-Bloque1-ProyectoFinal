@@ -422,13 +422,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationAxis: {x: 0, y: 0, z: 1}
+  rotationAngle: 90
   rotationDuration: 5
+  interactMessage: Presiona E para rotar
   onInteract:
     m_PersistentCalls:
       m_Calls: []
   onRotationComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1783375631}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: AddRotation
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 66203634}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   hasRotated: 0
 --- !u!1 &72562089
 GameObject:
@@ -983,7 +997,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1783375631}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: LookAtTarget
+        m_MethodName: SetLookAtTarget
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -991,6 +1005,30 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1738379182}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1738379182}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Choque
           m_BoolArgument: 1
         m_CallState: 2
   objectToActivate: {fileID: 0}
@@ -1262,7 +1300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3837517665942145582, guid: 0daf96c15d4c97b4e9e526f6acfce2f0, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9999942
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3837517665942145582, guid: 0daf96c15d4c97b4e9e526f6acfce2f0, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1274,11 +1312,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3837517665942145582, guid: 0daf96c15d4c97b4e9e526f6acfce2f0, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0034034199
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3837517665942145582, guid: 0daf96c15d4c97b4e9e526f6acfce2f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0.39
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3853624544057989908, guid: 0daf96c15d4c97b4e9e526f6acfce2f0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2549,7 +2587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3039082362767523460, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5569831857065431370, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
       propertyPath: destroyAfterTrigger
@@ -3039,6 +3077,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31e3ac458c9e3e489bc8749043b60e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &952548752 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3039082362767523460, guid: b11c17f1acc3f1247b5ce5a91b255749, type: 3}
+  m_PrefabInstance: {fileID: 808731059}
+  m_PrefabAsset: {fileID: 0}
 --- !u!108 &965885170 stripped
 Light:
   m_CorrespondingSourceObject: {fileID: 7152093521784964720, guid: 3d930624068a0544699572cca2b6c74a, type: 3}
@@ -4646,7 +4689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8788411872694250121, guid: 3d930624068a0544699572cca2b6c74a, type: 3}
       propertyPath: locked
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8788411872694250121, guid: 3d930624068a0544699572cca2b6c74a, type: 3}
       propertyPath: LockedMessage
@@ -5618,7 +5661,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738379179}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 34e73be737a95b74387f44f7b84137bf, type: 2}
   m_CullingMode: 0
@@ -5677,13 +5720,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationAxis: {x: 0, y: 0, z: 1}
+  rotationAngle: 90
   rotationDuration: 5
+  interactMessage: Presiona E para rotar
   onInteract:
     m_PersistentCalls:
       m_Calls: []
   onRotationComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1783375631}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: AddRotation
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1742948408}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   hasRotated: 0
 --- !u!1001 &1751304773
 PrefabInstance:
@@ -5926,17 +5983,17 @@ MonoBehaviour:
   onRotationLimitReached:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 952548752}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   mainCamera: {fileID: 240273830}
   virtualCamera: {fileID: 897195316}
@@ -6694,7 +6751,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2029521040
 Transform:
   m_ObjectHideFlags: 0

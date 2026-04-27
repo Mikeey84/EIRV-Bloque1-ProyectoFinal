@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
         {
             rotationCount++;
         }
-        else
+        if(rotationCount == 2)
         {
             UIAndParentController.newParent = parent.transform;
 
