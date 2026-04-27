@@ -25,7 +25,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             Interactable interactable = hit.collider.GetComponentInParent<Interactable>();
 
-            if (interactable != null)
+            if (interactable != null && interactable.enabled)
             {
                 interactable.ShowMess();
 
