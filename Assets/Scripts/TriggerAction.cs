@@ -24,4 +24,20 @@ public class TriggerAction : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player") && GameManager.Instance.IsGame())
+        {
+            foreach (var evt in onPlayerEnter)
+            {
+                evt.Invoke();
+            }
+
+            if (destroyAfterTrigger)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
 }

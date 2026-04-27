@@ -43,6 +43,11 @@ namespace StarterAssets
         public bool useReverb = true;
         public AudioReverbPreset reverbPreset = AudioReverbPreset.Cave;
 
+        [Header("Moving Parent")]
+        public Transform movingReference;
+
+        private Vector3 lastReferencePosition;
+
         public bool canMove = true;
 
         private float _speed;
@@ -69,6 +74,9 @@ namespace StarterAssets
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
             _audioSource = GetComponent<AudioSource>();
+
+            if (movingReference != null)
+                lastReferencePosition = movingReference.position;
 
 #if ENABLE_INPUT_SYSTEM
             _playerInput = GetComponent<PlayerInput>();
@@ -145,71 +153,38 @@ namespace StarterAssets
         {
             if (!canMove) return;
 
+            Vector3 platformDelta = Vector3.zero;
+
+            if (movingReference != null)
+            {
+                platformDelta = movingReference.position - lastReferencePosition;
+                lastReferencePosition = movingReference.position;
+            }
+
             float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
             if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
-            float currentHorizontalSpeed = new Vector3(
-                _controller.velocity.x,
-                0.0f,
-                _controller.velocity.z
-            ).magnitude;
-
-            float speedOffset = 0.1f;
             float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
 
-            if (currentHorizontalSpeed < targetSpeed - speedOffset ||
-                currentHorizontalSpeed > targetSpeed + speedOffset)
-            {
-                _speed = Mathf.Lerp(
-                    currentHorizontalSpeed,
-                    targetSpeed * inputMagnitude,
-                    Time.deltaTime * SpeedChangeRate
-                );
-
-                _speed = Mathf.Round(_speed * 1000f) / 1000f;
-            }
-            else
-            {
-                _speed = targetSpeed;
-            }
+            _speed = Mathf.Lerp(
+                _speed,
+                targetSpeed * inputMagnitude,
+                Time.deltaTime * SpeedChangeRate
+            );
 
             Vector3 inputDirection = Vector3.zero;
 
             if (_input.move != Vector2.zero)
             {
-                inputDirection = transform.right * _input.move.x +
-                                 transform.forward * _input.move.y;
+                inputDirection =
+                    transform.right * _input.move.x +
+                    transform.forward * _input.move.y;
             }
 
-            float fixedX = transform.position.x;
-            float fixedZ = transform.position.z;
+            Vector3 playerMovement = inputDirection.normalized * (_speed * Time.deltaTime);
+            Vector3 gravityMovement = new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime;
 
-            _controller.Move(
-                inputDirection.normalized * (_speed * Time.deltaTime) +
-                new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime
-            );
-
-            _controller.enabled = false;
-
-            if (_input.move == Vector2.zero)
-            {
-                transform.position = new Vector3(fixedX, transform.position.y, fixedZ);
-            }
-            else
-            {
-                Vector3 delta = transform.position - new Vector3(fixedX, transform.position.y, fixedZ);
-                float deltaRight = Vector3.Dot(delta, transform.right);
-                float deltaForward = Vector3.Dot(delta, transform.forward);
-
-                Vector3 allowedDelta = Vector3.zero;
-
-                if (_input.move.x != 0f) allowedDelta += transform.right * deltaRight;
-                if (_input.move.y != 0f) allowedDelta += transform.forward * deltaForward;
-
-                transform.position = new Vector3(fixedX, transform.position.y, fixedZ) + allowedDelta;
-            }
-
-            _controller.enabled = true;
+            _controller.Move(platformDelta + playerMovement + gravityMovement);
         }
 
         private void HandleFootsteps()

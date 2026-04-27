@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     public GameObject playerTrigger;
     public JetpackController controller;
     public StarterAssetsInputs starterAssetsInputs;
+    public GameObject playerplayer;
+    public Transform spawnT;
 
     private Coroutine shakeCoroutine;
     private Vector3 originalCameraLocalPos;
@@ -37,7 +39,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 30;
+        Application.targetFrameRate = 60;
     }
 
     private void Awake()
@@ -159,5 +161,6 @@ public class GameManager : MonoBehaviour
     {
         isGame = value;
         starterAssetsInputs.CursorLock();
+        playerplayer.transform.position = spawnT.position;
     }
 }
